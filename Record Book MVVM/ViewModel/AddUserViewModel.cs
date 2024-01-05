@@ -36,16 +36,13 @@ namespace Record_Book_MVVM.ViewModel
 
             if (existingUser == null)
             {
-                // Если пользователя с таким именем нет, добавляем нового пользователя
                 UserManager.AddUser(new User() { Name = Name, Email = Email });
             }
             else
             {
-                // Если пользователь существует, обновляем его данные
                 existingUser.Name = Name;
                 existingUser.Email = Email;
 
-                // Можно также вывести сообщение об успешном обновлении
                 MessageBox.Show("Данные пользователя обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
