@@ -23,9 +23,9 @@ namespace Record_Book_MVVM.Models
 			_DatabaseUsers.Add(user);
 
 		}
-		public static User GetUserByName(string name)
+		public static User GetUserByName(string name, string email)
         {
-            return _DatabaseUsers.FirstOrDefault(user => user.Name == name);
+            return _DatabaseUsers.FirstOrDefault(user => user.Name == name || user.Email == email);
         }
 	}
 }

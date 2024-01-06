@@ -17,12 +17,13 @@ namespace Record_Book_MVVM.ViewModel
 
 		public string? Name { get; set; }
 		public string? Email { get; set; }
+		private bool CanAdd = true;
+		private User existingUser { get; set; }
 
-		public AddUserViewModel()
+
+        public AddUserViewModel()
 		{
 			AddUserCommand = new RelayCommand(AddUser, CanAddUser);
-
-
 		}
 
 		private bool CanAddUser(object obj)
@@ -32,14 +33,18 @@ namespace Record_Book_MVVM.ViewModel
 
 		private void AddUser(object obj)
 		{
-            User existingUser = UserManager.GetUserByName(Name);
-
-            if (existingUser == null)
+            User checkUser = UserManager.GetUserByName(Name, Email);
+            if (existingUser == null && CanAdd == true && checkUser == null)
             {
                 UserManager.AddUser(new User() { Name = Name, Email = Email });
             }
             else
             {
+				if(existingUser == null)
+				{
+					existingUser = UserManager.GetUserByName(Name, Email);
+
+                }
                 existingUser.Name = Name;
                 existingUser.Email = Email;
 
@@ -51,6 +56,15 @@ namespace Record_Book_MVVM.ViewModel
     {
         Name = user?.Name;
         Email = user?.Email;
-    }
+            existingUser = UserManager.GetUserByName(Name, Email);
+            if (existingUser == null)
+			{
+				CanAdd = true;
+			}
+			else
+			{
+				CanAdd = false;
+			}
+        }
 	}
 }
