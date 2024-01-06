@@ -22,9 +22,11 @@
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <EventSetter Event="MouseDoubleClick" Handler="UserListViewItem_DoubleClick"/>
+                        <EventSetter Event="PreviewMouseRightButtonDown" Handler="UserList_PreviewMouseRightButtonDown"/>
                     </Style>
                 </ListView.ItemContainerStyle>
-            </ListView>            
+            </ListView>
+
         </Grid>
                               
     </Grid>

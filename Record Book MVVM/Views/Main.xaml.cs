@@ -61,5 +61,20 @@ namespace Record_Book_MVVM.Views
 				addUserWin.ShowDialog();
             }
         }
+        private void UserList_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.RightButton == MouseButtonState.Pressed)
+            {
+                MainViewModel mainViewModel = DataContext as MainViewModel;
+
+                // Определяем, находится ли курсор над элементом ListView
+                HitTestResult hitTestResult = VisualTreeHelper.HitTest(UserList, e.GetPosition(UserList));
+                if (hitTestResult.VisualHit is FrameworkElement element && element.DataContext is User selectedUser)
+                {
+                    // Вызываем метод удаления элемента из MainViewModel
+                    mainViewModel.RemoveSelectedUser(selectedUser);
+                }
+            }
+        }
     }
 }

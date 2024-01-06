@@ -63,5 +63,13 @@ namespace Record_Book_MVVM.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public void RemoveSelectedUser(User user)
+        {
+            if (MessageBox.Show($"Вы уверены, что хотите удалить пользователя {user.Name}?", "Удаление пользователя", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                // Удаление пользователя из коллекции и обновление представления
+                Users.Remove(user);
+            }
+        }
     }
 }
