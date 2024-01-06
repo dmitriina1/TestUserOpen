@@ -58,7 +58,7 @@ namespace Record_Book_MVVM.Views
                 addUserWin.Owner = this;
                 addUserWin.DataContext = addUserViewModel;
                 addUserWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                addUserWin.Show();
+				addUserWin.ShowDialog();
             }
         }
     }

@@ -42,7 +42,7 @@ namespace Record_Book_MVVM.ViewModel
 			AddUser addUserWin = new AddUser();
 			addUserWin.Owner = mainWindow;
 			addUserWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-			addUserWin.Show();
+			addUserWin.ShowDialog();
 
 
 		}
