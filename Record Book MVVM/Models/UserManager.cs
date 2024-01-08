@@ -19,7 +19,7 @@ namespace Record_Book_MVVM.Models
 
 
 		public static void AddUser(User user)
-		{
+		{	
 			_DatabaseUsers.Add(user);
 
 		}
